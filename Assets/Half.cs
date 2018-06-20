@@ -86,6 +86,11 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
         return a._value != b._value;
     }
 
+    public override string ToString()
+    {
+        return ((float) this).ToString();
+    }
+
     public string ToString(string format, IFormatProvider formatProvider)
     {
         return ((float) this).ToString(format, formatProvider);
