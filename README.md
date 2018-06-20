@@ -1,3 +1,3 @@
 # HalfFloat
-According to:
+Reference:
 ftp://ftp.fox-toolkit.org/pub/fasthalffloatconversion.pdf
