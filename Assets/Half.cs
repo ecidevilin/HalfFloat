@@ -8,12 +8,28 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
     public static explicit operator Half(float f)
     {
         uint u = (FloatUint)f;
+        if (u == 0)
+        {
+            return new Half() {_value =  0};
+        }
+        if (u == 0x80000000)
+        {
+            return new Half() {_value = 0x8000};
+        }
         return new Half() {_value = (ushort)(((u >> 16) & 0x8000) | ((((u & 0x7f800000) - 0x38000000) >> 13) & 0x7c00) | ((u >> 13) & 0x03ff))};
     }
 
     public static implicit operator float(Half h)
     {
         ushort s = h._value;
+        if (s == 0)
+        {
+            return 0;
+        }
+        if (s == 0x8000)
+        {
+            return (FloatUint)0x80000000;
+        }
         return (FloatUint)(uint)(((s & 0x8000) << 16) | (((s & 0x7c00) + 0x1C000) << 13) | ((s & 0x03FF) << 13));
     }
 
