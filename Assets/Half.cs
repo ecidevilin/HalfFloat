@@ -3,8 +3,6 @@ using Chaos;
 
 public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Half>
 {
-    public static readonly Half NegativeInfinity = new Half() {_value = 0xFFFF};
-    public static readonly Half PositiveInfinity = new Half() { _value = 0x7FFF };
     ushort _value;
 
     public static explicit operator Half(float f)
