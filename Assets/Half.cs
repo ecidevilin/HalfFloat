@@ -8,16 +8,13 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
     public static explicit operator Half(float f)
     {
         uint u = (FloatUint)f;
-        Half ret = new Half() {_value = (ushort)(((u >> 16) & 0x8000) | ((((u & 0x7f800000) - 0x38000000) >> 13) & 0x7c00) | ((u >> 13) & 0x03ff))};
-        return ret;
+        return new Half() {_value = (ushort)(((u >> 16) & 0x8000) | ((((u & 0x7f800000) - 0x38000000) >> 13) & 0x7c00) | ((u >> 13) & 0x03ff))};
     }
 
     public static implicit operator float(Half h)
     {
         ushort s = h._value;
-        uint u = (uint)(((s & 0x8000) << 16) | (((s & 0x7c00) + 0x1C000) << 13) | ((s & 0x03FF) << 13));
-        float ret = (FloatUint)u;
-        return ret;
+        return (FloatUint)(uint)(((s & 0x8000) << 16) | (((s & 0x7c00) + 0x1C000) << 13) | ((s & 0x03FF) << 13));
     }
 
     
@@ -70,7 +67,7 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
     }
     public static bool operator !=(Half a, Half b)
     {
-        return a._value == b._value;
+        return a._value != b._value;
     }
 
     public string ToString(string format, IFormatProvider formatProvider)
@@ -80,8 +77,7 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
 
     public int CompareTo(object obj)
     {
-        Half h = (Half)obj;
-        return CompareTo(h);
+        return CompareTo((Half)obj);
     }
 
     public int CompareTo(Half h)
