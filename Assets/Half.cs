@@ -16,6 +16,7 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
         {
             return new Half() {_value = 0x8000};
         }
+        // TODO: subnormal numbers
         return new Half() {_value = (ushort)(((u >> 16) & 0x8000) | ((((u & 0x7f800000) - 0x38000000) >> 13) & 0x7c00) | ((u >> 13) & 0x03ff))};
     }
 
@@ -30,6 +31,7 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
         {
             return (FloatUint)0x80000000;
         }
+        // TODO: subnormal numbers
         return (FloatUint)(uint)(((s & 0x8000) << 16) | (((s & 0x7c00) + 0x1C000) << 13) | ((s & 0x03FF) << 13));
     }
 
