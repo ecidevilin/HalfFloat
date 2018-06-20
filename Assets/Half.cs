@@ -20,45 +20,45 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
         return ret;
     }
 
-    // FIXME:
+    
     public static Half operator +(Half a, Half b)
     {
         return (Half)((float) a + (float) b);
     }
 
-    // FIXME:
+    
     public static Half operator -(Half a, Half b)
     {
         return (Half)((float)a - (float)b);
     }
-    // FIXME:
+    
     public static Half operator *(Half a, Half b)
     {
         return (Half)((float)a * (float)b);
     }
 
-    // FIXME:
+    
     public static Half operator /(Half a, Half b)
     {
         return (Half)((float)a / (float)b);
     }
 
-    // FIXME:
+    
     public static bool operator >(Half a, Half b)
     {
         return (float)a > (float)b;
     }
-    // FIXME:
+    
     public static bool operator <(Half a, Half b)
     {
         return (float)a < (float)b;
     }
-    // FIXME:
+    
     public static bool operator >=(Half a, Half b)
     {
         return (float)a >= (float)b;
     }
-    // FIXME:
+    
     public static bool operator <=(Half a, Half b)
     {
         return (float)a <= (float)b;
