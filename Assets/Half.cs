@@ -8,9 +8,7 @@ public struct Half : IFormattable, IComparable, IComparable<Half>, IEquatable<Ha
     public static explicit operator Half(float f)
     {
         uint u = (FloatUint)f;
-        u = (((u >> 16) & 0x8000) | ((((u & 0x7f800000) - 0x38000000) >> 13) & 0x7c00) | ((u >> 13) & 0x03ff));
-        Half ret = new Half() {_value = (ushort)u };
-        return ret;
+        return new Half() {_value = (ushort)(((u >> 16) & 0x8000) | ((((u & 0x7f800000) - 0x38000000) >> 13) & 0x7c00) | ((u >> 13) & 0x03ff))};
     }
 
     public static implicit operator float(Half h)
